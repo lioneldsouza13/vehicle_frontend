@@ -1,0 +1,38 @@
+.card{
+    width:20rem;
+    margin-left: 1%;
+    margin-top: 2%;
+    display: flex;
+    justify-items: center;
+    background-color: #c1f3c1c0 !important;
+    border-radius: 25px !important;
+    
+}
+ .Success {
+    background-color: #A0D468 !important;
+    border-radius: 25px;
+ } 
+ .input {
+    background-color: #f7f8f6 !important;
+    border-radius: 25px;
+    width: 50%;
+    text-align: center;
+ }
+ .card-text{
+    margin-left: 5%;
+    text-align: center;
+ }
+ .card-title{
+     text-align: center !important;
+ }
+ .modalFooter{
+     width: 100%;
+     margin-left: 1% !important;
+ }
+.edit{
+    margin-left: 1% !important;
+}
+.btn.btn-danger{
+    margin-left: 1%;
+    border-radius: 25px;
+}

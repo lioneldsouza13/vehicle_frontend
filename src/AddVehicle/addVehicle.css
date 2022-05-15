@@ -1,0 +1,30 @@
+.form-control{
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.row{
+    width: 100%;
+}
+.container{
+    margin-top: 1%;
+    padding-top: 1%;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #A0D468;
+    border-radius: 25px;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    
+    width: 90% !important;
+}
+
+h3{
+    background-color: #A0D468;
+    width: 70%;
+    text-align: center;
+    margin-left: 15%;
+    margin-top: 10%;
+    border-radius: 25px;
+    padding: 1%;
+}
