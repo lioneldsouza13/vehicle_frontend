@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import selectModule from './actionLogic'
-
-const rootReducer = combineReducers({selectModule});
+import selectInventory from "./inventoryStore";
+const rootReducer = combineReducers({selectModule,selectInventory});
 
 export default rootReducer;

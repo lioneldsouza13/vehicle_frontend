@@ -38,7 +38,7 @@ const AddVehicle =()=>{
 
     const sendData =async ()=>{
         const currentDate = createDate();
-        const data = {...state,createdDate:currentDate,pending:true}
+        const data = {...state,createdDate:currentDate,pending:true,inventory:[]}
         dispatch(insertVehicle(data))
         setState(intialState)
         setError(initialErrorState)
@@ -76,79 +76,79 @@ const AddVehicle =()=>{
             <h3>ADD NEW VEHICLE</h3>
             
             <div className='container'>
-            <div class="form-group row">
-            <label for="vehicleName" class="col-sm-3 col-form-label">Vehicle Name </label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="vehicleName" placeholder="Vehicle Name" 
+            <div className="form-group row">
+            <label for="vehicleName" className="col-sm-3 col-form-label">Vehicle Name </label>
+            <div className="col-sm-4">
+                <input type="text" className="form-control" id="vehicleName" placeholder="Vehicle Name" 
                 onChange={handleVehicleState} name="vehicleName"
                 value={state.vehicleName}/>
-                <p class="error">{error.vehicleName}</p>
+                <p className="error">{error.vehicleName}</p>
             </div>
             </div>
-            <div class="form-group row">
-            <label for="vehicleNumber" class="col-sm-3 col-form-label">Vehicle Number </label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="vehicleNumber" placeholder="Vehicle Number" 
+            <div className="form-group row">
+            <label for="vehicleNumber" className="col-sm-3 col-form-label">Vehicle Number </label>
+            <div className="col-sm-4">
+                <input type="text" className="form-control" id="vehicleNumber" placeholder="Vehicle Number" 
                   onChange={handleVehicleState} name="vehicleNumber"
                   value={state.vehicleNumber}/>
-                   <p class="error">{error.vehicleNumber}</p>
+                   <p className="error">{error.vehicleNumber}</p>
             </div>
             </div>
-            <div class="form-group row">
-            <label for="vehicleOwner" class="col-sm-3 col-form-label">Vehicle Owner </label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="vehicleOwner" placeholder="Vehicle Owner"
+            <div className="form-group row">
+            <label for="vehicleOwner" className="col-sm-3 col-form-label">Vehicle Owner </label>
+            <div className="col-sm-4">
+                <input type="text" className="form-control" id="vehicleOwner" placeholder="Vehicle Owner"
                   onChange={handleVehicleState} name="vehicleOwner" 
                   value={state.vehicleOwner}/>
                    <p class="error">{error.vehicleOwner}</p>
             </div>
             </div>
-            <div class="form-group row">
-            <label for="ownerMobile" class="col-sm-3 col-form-label">Owner Mobile No</label>
-            <div class="col-sm-4">
-                <input type="number" class="form-control" id="ownerMobile" placeholder="Owner Mobile no (+91)" 
+            <div className="form-group row">
+            <label for="ownerMobile" className="col-sm-3 col-form-label">Owner Mobile No</label>
+            <div className="col-sm-4">
+                <input type="number" className="form-control" id="ownerMobile" placeholder="Owner Mobile no (+91)" 
                   onChange={handleVehicleState} name="mobile" 
                   value={state.mobile}/>
-                   <p class="error">{error.mobile}</p>
+                   <p className="error">{error.mobile}</p>
             </div>
             </div>
 
-            <div class="form-group row">
-            <label for="problem" class="col-sm-3 col-form-label">Vehicle Problem</label>
-            <div class="col-sm-4">
-                <textarea class="form-control" id="problem" placeholder="Vehicle Problem" 
+            <div className="form-group row">
+            <label for="problem" className="col-sm-3 col-form-label">Vehicle Problem</label>
+            <div className="col-sm-4">
+                <textarea className="form-control" id="problem" placeholder="Vehicle Problem" 
                   onChange={handleVehicleState} name="problem"
                   value={state.problem}/>
-                   <p class="error">{error.problem}</p>
+                   <p className="error">{error.problem}</p>
             </div>
             </div>
-            <div class="form-group row">
-            <label for="expectedCost" class="col-sm-3 col-form-label">Expected Cost </label>
-            <div class="col-sm-4">
+            <div className="form-group row">
+            <label for="expectedCost" className="col-sm-3 col-form-label">Expected Cost </label>
+            <div className="col-sm-4">
                 <input type="number" class="form-control" id="expectedCose" placeholder="Expected Cost &#8377;"
                   onChange={handleVehicleState} name="expectedCost"
                   value={state.expectedCost} />
-                   <p class="error">{error.expectedCost}</p>
+                   <p className="error">{error.expectedCost}</p>
             </div>
             </div>
             
-            <div class="form-group row">
-            <label for="kms" class="col-sm-3 col-form-label">KMS Driven </label>
-            <div class="col-sm-4">
-                <input type="number" class="form-control" id="kms" placeholder="KMS Driven" 
+            <div className="form-group row">
+            <label for="kms" className="col-sm-3 col-form-label">KMS Driven </label>
+            <div className="col-sm-4">
+                <input type="number" className="form-control" id="kms" placeholder="KMS Driven" 
                   onChange={handleVehicleState} name="kms"
                   value={state.kms}/>
-                   <p class="error">{error.kms}</p>
+                   <p className="error">{error.kms}</p>
             </div>
             </div>
 
-            <div class="form-group row">
-            <label for="fixDate" class="col-sm-3 col-form-label">Expected Fix Date </label>
-            <div class="col-sm-4">
-                <input type="date" class="form-control" id="kms" placeholder="fixDate" 
+            <div className="form-group row">
+            <label for="fixDate" className="col-sm-3 col-form-label">Expected Fix Date </label>
+            <div className="col-sm-4">
+                <input type="date" className="form-control" id="kms" placeholder="fixDate" 
                   onChange={handleVehicleState} name="expectedFixDate"
                   value={state.expectedFixDate}/>
-                   <p class="error">{error.expectedFixDate}</p>
+                   <p className="error">{error.expectedFixDate}</p>
                 
                 <button type="button" class="btn btn-success" disabled={error.invalidSubmit}
                 onClick={sendData}>Add Vehicle</button>

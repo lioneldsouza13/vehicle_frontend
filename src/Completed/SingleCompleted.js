@@ -17,17 +17,22 @@ const SingleCompleted = (props)=>{
 
     return(
        
-       <div class="card" >
-    <div class="card-body">
-    <h5 class="card-title">{props.data.vehicleName}</h5>
-    <p class="card-text">{props.data.vehicleNumber}</p>
-    <p class="card-text">{props.data.vehicleOwner}</p>
-    <p class="card-text">{props.data.mobile}</p>
-    <p class="card-text">Problems : {props.data.problem}</p>
-    <p class="card-text">Cost : Rs.{props.data.expectedCost} </p>
-    <p class="card-text">Driven : {props.data.kms} Kms</p>
-    <p class="card-text">Date :{props.data.expectedFixDate}</p>
-    <p class="card-text">{props.data.createdDate}</p>
+       <div className="card" >
+    <div className="card-body">
+    <h5 className="card-title">{props.data.vehicleName}</h5>
+    <p className="card-text">{props.data.vehicleNumber}</p>
+    <p className="card-text">{props.data.vehicleOwner}</p>
+    <p className="card-text">{props.data.mobile}</p>
+    <p className="card-text">Problems : {props.data.problem}</p>
+    <p className="card-text">Cost : Rs.{props.data.expectedCost} </p>
+    <p className="card-text">Driven : {props.data.kms} Kms</p>
+    <p className="card-text">Date :{props.data.expectedFixDate}</p>
+    <p className="card-text">{props.data.createdDate}</p>
+    <h5 class="card-text"> Inventory Used</h5>
+    <hr/>
+    {props.data.inventory!== undefined && props.data.inventory.map((data)=>(
+      <p class="card-text">{data.name.toUpperCase()} : {data.quantity}</p>
+    ))}
     <button className='Success' onClick={()=>changeType()}>Pending</button>
     </div>
    

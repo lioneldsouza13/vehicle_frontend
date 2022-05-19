@@ -23,7 +23,7 @@ const Completed =(data)=>{
         
     } 
     return(
-        <div class="container">
+        <div className="container">
             <br/>
             <input type="text" className="input" onChange={searchVehicle} placeholder="Search ..."/>
             <div className="row">

@@ -3,6 +3,7 @@ import {updateVehicle,deleteVehicle} from '../redux/actionTypes'
 import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import {Button,Modal} from 'react-bootstrap'
+import UseInventory from '../Inventory/UseInventory'
 const SinglePending = (props)=>{
  
     const [error,setError] = useState({});
@@ -11,12 +12,15 @@ const SinglePending = (props)=>{
     const dispatch = useDispatch()
     const [state,setState] = useState(props.data)
     const [show, setShow] = useState(false);
-
+    const [showInventory,setShowInventory] =useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const[invalidSubmit,setInvalidSubmit] =useState(false)
 
+    const handleInventory=(data)=>{
+        setShowInventory(data)
+    }
     const changeType =(pending)=>{
       
         dispatch(updateVehicle({...state,pending:pending}))
@@ -30,6 +34,14 @@ const SinglePending = (props)=>{
         const validSubmit = Object.values(error).join('').trim()===""
         setInvalidSubmit(!validSubmit)
      },[state])
+
+     useEffect(()=>{
+     setState(props.data)
+   },[props])
+
+     const InventoryData =()=>{
+      setShowInventory(true)
+     }
  
      
      const handleVehicleState=(e)=>{
@@ -61,14 +73,14 @@ const SinglePending = (props)=>{
             <div className='container'>
             <div className='row'>
             <p>Vehicle Name :</p> 
-                <input type="text" class="card-text" name='vehicleName' value={state.vehicleName} onChange={handleVehicleState}/>
+                <input type="text" className="card-text" name='vehicleName' value={state.vehicleName} onChange={handleVehicleState}/>
                 <p>{error.vehicleName}</p>
             </div>
             </div>
             <div className='container'>
             <div className='row'>
             <p>Vehicle Number :</p> 
-                <input type="text" class="card-text" name='vehicleNumber' value={state.vehicleNumber} onChange={handleVehicleState}/>
+                <input type="text" className="card-text" name='vehicleNumber' value={state.vehicleNumber} onChange={handleVehicleState}/>
                 <p>{error.vehicleNumber}</p>
             </div>
             </div>
@@ -76,46 +88,46 @@ const SinglePending = (props)=>{
             <div className='container'>
             <div className='row'>
             <p>Vehicle Owner :</p> 
-            <input type="text" class="card-text" name='vehicleOwner' value={state.vehicleOwner} onChange={handleVehicleState}/>
+            <input type="text" className="card-text" name='vehicleOwner' value={state.vehicleOwner} onChange={handleVehicleState}/>
             <p>{error.vehicleOwner}</p>
             </div>
             </div>
             <div className='container'>
             <div className='row'>
             <p>Owner Mobile :</p> 
-            <input type="number"  class="card-text" name="mobile" value={state.mobile} onChange={handleVehicleState}/>
+            <input type="number"  className="card-text" name="mobile" value={state.mobile} onChange={handleVehicleState}/>
             <p>{error.mobile}</p>
             </div>
             </div>
             <div className='container'>
             <div className='row'>
             <p>Problem :</p> 
-            <textarea class="card-text" name= "problem" value={state.problem} onChange={handleVehicleState}></textarea>
+            <textarea className="card-text" name= "problem" value={state.problem} onChange={handleVehicleState}></textarea>
             <p>{error.problem}</p>
             </div>
             </div>
             <div className='container'>
             <div className='row'>
             <p>Expected Cost :</p> 
-            <input type="number"  class="card-text" name="expectedCost" value={state.expectedCost} onChange={handleVehicleState}/>
+            <input type="number"  className="card-text" name="expectedCost" value={state.expectedCost} onChange={handleVehicleState}/>
             <p>{error.expectedCost}</p>
             </div>
             </div>
             <div className='container'>
             <div className='row'>
             <p>Expected Fix Date :</p> 
-            <input type="date" class="card-text" name="expectedFixDate" value={state.expectedFixDate} onChange={handleVehicleState}/>
+            <input type="date" className="card-text" name="expectedFixDate" value={state.expectedFixDate} onChange={handleVehicleState}/>
             <p>{error.expectedFixDate}</p>
             </div>
             </div>
             <div className='container'>
             <div className='row'>
             <p>KMS :</p> 
-            <input type="number" class="card-text" name="kms" value={state.kms} onChange={handleVehicleState}/>
+            <input type="number" className="card-text" name="kms" value={state.kms} onChange={handleVehicleState}/>
             </div>
             </div>
            
-            <p class="card-text">Created Date :{state.createdDate}</p>
+            <p className="card-text">Created Date :{state.createdDate}</p>
            
             </div>
            
@@ -141,10 +153,17 @@ const SinglePending = (props)=>{
     <p class="card-text">Driven : {props.data.kms} Kms</p>
     <p class="card-text">Date :{props.data.expectedFixDate}</p>
     <p class="card-text">{props.data.createdDate}</p>
+    <h5 class="card-text"> Inventory Used</h5>
+    <hr/>
+    {props.data.inventory!== undefined && props.data.inventory.map((data)=>(
+      <p class="card-text">{data.name.toUpperCase()} : {data.quantity}</p>
+    ))}
+    
   
       <button className='Success'onClick={handleShow}>Edit</button> &nbsp;
     <button className='Success' onClick={()=>changeType(false)}>Completed</button>
     <button className='btn btn-danger' onClick={()=>deleteData()}>Delete</button>
+    <button className='btn btn-danger' onClick={()=>InventoryData()}>Inventory</button>
     </div>
     </div>  
 
@@ -162,7 +181,7 @@ const SinglePending = (props)=>{
           </Button>
         </Modal.Footer>
       </Modal>
-
+      <UseInventory handleInventory={handleInventory} showInventory={showInventory} vehicle={state}/>
     </div>
   
     

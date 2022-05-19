@@ -5,12 +5,12 @@ import Modules from './Modules/Modules'
 import {Provider} from 'react-redux'
 import store from './redux/store'
 import {BrowserRouter as Router} from 'react-router-dom'
-
+import inventoryStore from './redux/inventoryStore';
 function App() {
  
   return (
     <Router>
-    <Provider store = {store}>
+    <Provider store = {store} inventoryStore={inventoryStore}>
     <div className="App">
     <Header/>
     <Modules />

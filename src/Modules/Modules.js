@@ -7,6 +7,7 @@ import Pending from "../Pending/Pending";
 import Completed from "../Completed/Completed";
 import {fetchVehicles} from '../redux/actionTypes'
 import store from '../redux/store'
+import Inventory from "../Inventory/Inventory";
 
 
 const Modules = () =>{
@@ -32,6 +33,7 @@ const Modules = () =>{
           <Route path="/add" element={ <AddVehicle/>}></Route>
           <Route path="/pending" element={ <Pending store={data} />}></Route>
           <Route path="/completed" element={ <Completed store={data} />}></Route>
+          <Route path="/inventory" element={<Inventory/>}></Route>
        </Routes>
 
     )
